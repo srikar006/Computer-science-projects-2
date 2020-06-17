@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="css/dx.spa.css" />
+    <link rel="dx-theme" data-theme="ios.default" href="css/dx.ios.default.css" data-active="true" />
+    <link rel="dx-theme" data-theme="ios7.default" href="css/dx.ios7.default.css" data-active="true" />
+    <link rel="dx-theme" data-theme="android.holo-dark" href="css/dx.android.holo-dark.css" data-active="true" />
+
+    <title>CCMS</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- Framework -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="SQLitePlugin.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-rotate-compressed.js"></script>
+    <script type="text/javascript" src="js/jquery.number.min.js"></script>
+    <script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+    <script type="text/javascript" src="js/globalize.min.js"></script>
+    <script type="text/javascript" src="js/dx.all.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.custom-2.11.0.min.js"></script>
+    <script type="text/javascript" src="js/signature_pad.min.js"></script>
+
+    <!--<script type="text/javascript" src="js/dx.all.debug.js"></script>-->
+
+    <!-- Framework Styles -->
+    <link rel="stylesheet" type="text/css" href="css/mobiscroll.custom-2.11.0.min.css" />
+
+    <!--iOS CSS-->
+    <link rel="stylesheet" type="text/css" href="css/index.ios.css" />
+
+    <!--Android CSS-->
+    <link rel="stylesheet" type="text/css" href="css/index.android.css" />
+
+    <!-- CCMS Application libraries -->
+    <script type="text/javascript" src="ccms_tablet.globals.js"></script>
+    <script type="text/javascript" src="utils/utils.js"></script>
+    <script type="text/javascript" src="data/ccms_tablet.db.config.js"></script>
+    <script type="text/javascript" src="data/ccms_tablet.idr.config.js"></script>
+    <script type="text/javascript" src="data/ccms_tablet.app.version.js"></script>
+    <script type="text/javascript" src="ccms_tablet.config.js"></script>
+    <script type="text/javascript" src="connection/connection.js"></script>
+    <script type="text/javascript" src="filesystem/ccms_tablet.filesystem.js"></script>
+
+    <!-- CCMS SQLite API -->
+    <script type="text/javascript" src="data/utils/data_utils.js"></script>
+    <script type="text/javascript" src="data/local_db/dateconverter.js"></script>
+    <script type="text/javascript" src="data/local_db/localdb.js"></script>
+    <script type="text/javascript" src="data/local_db/provider.js"></script>
+    <script type="text/javascript" src="data/local_db/sync_logs.js"></script>
+
+    <!-- CCMS Sync API -->
+    <script type="text/javascript" src="data/sync_controllers/sync_args.js"></script>
+    <script type="text/javascript" src="data/sync_controllers/sync_core.js"></script>
+    <script type="text/javascript" src="data/sync_controllers/pset_sync_core.js"></script>
+    <script type="text/javascript" src="data/sync_controllers/idr_sync_core.js"></script>
+    <script type="text/javascript" src="data/sync_controllers/file_sync_core.js"></script>
+    <script type="text/javascript" src="data/sync_controllers/sync_core_controller.js"></script>
+    <script type="text/javascript" src="data/sync_controllers/sync_log_controller.js"></script>
+
+    <!-- CCMS Data Model  -->
+    <script type="text/javascript" src="data/model/model.js"></script>
+
+    <!-- CCMS View Controller Api -->
+    <script type="text/javascript" src="data/camera_controllers/camera_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/view_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/cache_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/attachment_base.js"></script>
+    <script type="text/javascript" src="data/view_controllers/org/org_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/users/user_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/projects_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/config/config_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/task_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/equipment/project_equipment_types_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/equipment/project_equipment_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/labor/project_labor_types_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/labor/project_labor_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/contractors/contractor_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_remark_attachments_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_item_attachments_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_equipment_attachments_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_equipment_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_labor_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_history_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_remark_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_activity_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_crew_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_items_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_material_controller.js"></script>
+    <script type="text/javascript" src="data/view_controllers/projects/idr/idr_controller.js"></script>
+
+    <!-- Main Startup Object -->
+    <script type="text/javascript" src="index.js"></script>
+
+    <!-- Layouts -->
+    <link rel="stylesheet" type="text/css" href="layouts/Navbar/NavbarLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Navbar/NavbarLayout.html" />
+    <script type="text/javascript" src="layouts/Navbar/NavbarLayout.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="layouts/Empty/EmptyLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Empty/EmptyLayout.html" />
+    <script type="text/javascript" src="layouts/Empty/EmptyLayout.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="layouts/CCMS/CCMSLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/CCMS/CCMSLayout.html" />
+    <script type="text/javascript" src="layouts/CCMS/CCMSLayout.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="layouts/CCMS/CCMSEmptyLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/CCMS/CCMSEmptyLayout.html" />
+    <script type="text/javascript" src="layouts/CCMS/CCMSEmptyLayout.js"></script>
+
+    <!-- Views -->
+    <link rel="dx-template" type="text/html" href="views/navigation.html" />
+
+    <!--Mobile Shared Tablet Views -->
+    <script type="text/javascript" src="views/Login.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Login.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Login.css" />
+
+    <script type="text/javascript" src="views/Settings.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Settings.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Settings.css" />
+
+    <script type="text/javascript" src="views/Setup.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Setup.dxview" />
+
+    <script type="text/javascript" src="views/SignOut.js"></script>
+    <link rel="dx-template" type="text/html" href="views/SignOut.dxview" />
+
+    <script type="text/javascript" src="views/Sync.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Sync.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Sync.css" />
+
+    <script type="text/javascript" src="views/SyncErrors.js"></script>
+    <link rel="dx-template" type="text/html" href="views/SyncErrors.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/SyncErrors.css" />
+
+    <!--Mobile Tablet Views -->
+
+    <!--   Project View-->
+    <script type="text/javascript" src="views/Projects/Projects.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/Projects.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/Projects.css" />
+
+    <!--Task Views-->
+    <script type="text/javascript" src="views/Projects/TaskNavigationModel.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/TaskNavigation.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/TaskNavigation.css" />
+
+    <script type="text/javascript" src="views/Projects/TaskBacklog.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/TaskBacklog.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/TaskBacklog.css" />
+
+    <script type="text/javascript" src="views/Projects/TaskHome.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/TaskHome.dxview" />
+
+    <!--IDR Views-->
+    <script type="text/javascript" src="views/Projects/IDR/IdrNavigationModel.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/IdrNavigation.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/IDR/IdrNavigation.css" />
+
+    <script type="text/javascript" src="views/Projects/IDR/IdrEditor.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/IdrEditor.dxview" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Inspector/IdrInspector.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Inspector/IdrInspector.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/IDR/Inspector/IdrInspector.css" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Items/IdrItemsVM.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Items/IdrItems.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/IDR/Items/IdrItems.css" />
+
+    <script type="text/javascript" src="views/Projects/IDR/History/IdrHistoryVM.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/History/IdrHistory.dxview" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Remarks/IdrRemarksVM.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Remarks/IdrRemarks.dxview" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Crews/IdrCrewsVM.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Crews/IdrCrews.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/IDR/Crews/IdrCrews.css" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Crews/Activities/IdrActivities.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Crews/Activities/IdrActivities.dxview" />
+
+    <link rel="stylesheet" type="text/css" href="views/Projects/IDR/Crews/Labor/IdrLabor.css" />
+    <script type="text/javascript" src="views/Projects/IDR/Crews/Labor/IdrLabor.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Crews/Labor/IdrLabor.dxview" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Crews/Equipment/IdrEquipment.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Crews/Equipment/IdrEquipment.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/Projects/IDR/Crews/Equipment/IdrEquipment.css" />
+
+    <!--	<script type="text/javascript" src="views/Projects/IDR/Materials/IdrMaterials.js"></script>
+	<link rel="dx-template" type="text/html" href="views/Projects/IDR/Materials/IdrMaterials.dxview"/>-->
+
+    <script type="text/javascript" src="views/Projects/IDR/Crews/Equipment/IdrEquipmentCondensed.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Crews/Equipment/IdrEquipmentCondensed.dxview" />
+
+    <script type="text/javascript" src="views/Projects/IDR/Crews/Labor/IdrLaborCondensed.js"></script>
+    <link rel="dx-template" type="text/html" href="views/Projects/IDR/Crews/Labor/IdrLaborCondensed.dxview" />
+
+</head>
+
+<body>
+    <div class="dx-viewport"></div>
+</body>
+
+</html>
